@@ -1,10 +1,18 @@
 <html>
     <body>
         <div id="画面"></div>
+        <button onclick="ボタンがクリックされた()">サイコロを振る</button>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script> 
         <script>
             //ここから
             let 回転中 = true
+            function ボタンがクリックされた() {
+                if (回転中) {
+                    回転中 = false
+                }else {
+                    回転中 = true
+                }
+            }
             const シーン = new THREE.Scene()
             const カメラ = new THREE.PerspectiveCamera( 65, 4/3, 1, 1000 );
             カメラ.position.z = 600;
@@ -31,8 +39,8 @@
     
     //ここから
     if (回転中) {
-        オブジェクト.rotation.x += 0.05
-        オブジェクト.rotation.y += 0.05;
+        オブジェクト.rotation.x += 0.55
+        オブジェクト.rotation.y += 0.55;
     }
 
     //ここまで
