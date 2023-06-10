@@ -37,7 +37,7 @@
                     回転中 = false
                     const サイコロの目 = Math.floor(Math.random*6) + 1
                     投げ上げ中 = true
-                    速度 = 20
+                    速度 = 35
                     switch (サイコロの目) {
                         case 1:
                             
@@ -71,10 +71,10 @@
         オブジェクト.rotation.y += 0.55;
     }
     if (投げ上げ中) {
-    オブジェクト.position.y += 速度;
-    速度 -=0.1
-    if (速度 <= -20) {
-        投げ上げ中 = false
+    オブジェクト.position.y += 速度;0
+    速度 -=1
+    if (速度 <= -35) {
+    投げ上げ中 = false
     }
 }
     //ここまで
