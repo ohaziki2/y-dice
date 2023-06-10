@@ -1,7 +1,11 @@
 <html>
     <body>
+        <head>
+            <link rel="stylesheet" href="style.css">
+        </head>
         <div id="画面"></div>
         <button onclick="ボタンがクリックされた()">サイコロを振る</button>
+        <button onclick="シンメトリーモード()">シンメトリー？！</button>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script> 
         <script>
             //ここから
@@ -21,9 +25,9 @@
             レンダラー.setSize( 640, 480 );
             レンダラー.setClearColor(new THREE.Color('black'));//背景色の設定
             画面.appendChild( レンダラー.domElement );
-            const モデル = new THREE.CubeGeometry(200,200,200);
+            const モデル = new THREE.CubeGeometry(350,350,350);
             const テクスチャ = new THREE.TextureLoader();
-            const マテリアル = [    
+            let マテリアル = [    
             new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/1.png' )}),
             new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/2.png' )}),
             new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/3.png' )}),
@@ -35,7 +39,6 @@
             シーン.add( オブジェクト );
             function ボタンがクリックされた() {
                 if (回転中) {
-                    回転中 = false
                     console.log(サイコロの目)
                     サイコロの目 = Math.floor(Math.random()*6) + 1
                     投げ上げ中 = true
@@ -46,6 +49,18 @@
                     オブジェクト.position.y = 0
                 }
             }
+            function シンメトリーモード() {
+                シーン.remove( オブジェクト )
+                シーン.add( オブジェクト )
+                マテリアル = [    
+            new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/1.png' )}),
+            new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/2.png' )}),
+            new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/3.png' )}),
+            new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/4.png' )}),
+            new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/5.png' )}),
+            new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/6.png' )})
+            ];
+            }
             function update() {
     
     //ここから
@@ -55,6 +70,7 @@
     }
     if (投げ上げ中) {
     if (速度 <=0) {
+        回転中 = false
         switch (サイコロの目) {
            case 1:
             オブジェクト.rotation.x = 円周率 
@@ -98,5 +114,17 @@
         </script>
         <h1>ジ・ウルティメイトハイパーデラックススーパーローリングダイスΩ</h1>
         <p1>なぜ？！？！太陽は熱いのか？！その謎を解くために我々は恒星の奥地へと向かった</p1>
+        <p2>太陽（たいよう、英: Sun、羅: Sol）は、銀河系（天の川銀河）の恒星の一つである。地球も含まれる太陽系の物理的中心であり、太陽系の全質量の99.8 %を占め、太陽系の全天体に重力の影響を与える。
+
+            太陽は属している銀河系の中ではありふれた[8]主系列星の一つで、スペクトル型はG2V（金色）である。推測年齢は約46億年で、中心部に存在する水素の50 %程度を熱核融合で使用し、主系列星として存在できる期間の半分を経過しているものと考えられている。なお、内部の状態については未解明な部分が多く、後述する「標準太陽モデル」によって求められているのが現状である。
+            
+            また、太陽が太陽系の中心の恒星であることから、任意の惑星系の中心の恒星を比喩的に「太陽」と呼ぶことがある[12]。
+            
+            概要と位置
+            太陽の半径は約70万 kmで直径約140万 kmとなり地球の直径の約109倍の大きさである。質量（太陽質量）は地球の約33.3万倍にほぼ等しい約1.989×1030 kgであり、太陽系の全質量の99.86 %を占める。平均密度は水の1.4倍であり、地球の5.5倍と比べ約1/4となる。
+            
+            太陽が属している銀河系では、その中心から太陽までの距離は約2万5千光年であり、オリオン腕に位置する。地球から太陽までの平均距離は約1億4960万 km（約8光分19光秒）である。この平均距離は地球太陽間距離の時間平均と考えても、地球の軌道長半径と考えてもどちらでも差し支えない。なお、この平均距離のより正確な値は 149597870700 m（誤差は 3 m）で、これを1天文単位 (au) と定義する[15][16][17]。なお、2012年8月の国際天文学連合 (IAU) の決議で 1 au の値は誤差 ±3 m を除いて正確に 149597870700 m であると再定義された[18]。この距離を光が届くのに要する時間は8.3分であるので、8.3光分とも表せる。太陽は銀河系内の軌道を一周するのに約2億2500万から2億5000万年ほどかかるとされており、それを太陽の公転軌道とするならば、太陽の自転軸はおよそ60度傾いている。公転運動ではこと座、ヘルクレス座の方向に向かって移動している。[要出典]
+            
+            太陽の数値を単位に用いるような場合、それらは太陽を表す記号☉をつけて表す。例えば太陽質量ならばM☉、太陽光度ならばL☉で表示する。時間の基準も、現在は原子時計で決まる1秒を基底にしているが、かつては地球の自転と公転、人間の視点からすると日の出や日の入りや季節の一巡を基準に「日」や「年」を決める太陽暦・太陰太陽暦が使われた。</p2>
     </body>
 </html>
