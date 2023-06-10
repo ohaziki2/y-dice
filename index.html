@@ -20,7 +20,7 @@
             レンダラー.setSize( 640, 480 );
             レンダラー.setClearColor(new THREE.Color('black'));//背景色の設定
             画面.appendChild( レンダラー.domElement );
-            const モデル = new THREE.CubeGeometry(200,200,200);
+            const モデル = new THREE.CubeGeometry(250,250,250);
             const テクスチャ = new THREE.TextureLoader();
             const マテリアル = [    
             new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/1.png' )}),
@@ -30,6 +30,7 @@
             new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/5.png' )}),
             new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/6.png' )})
             ];
+            
             const オブジェクト = new THREE.Mesh( モデル, マテリアル );
             シーン.add( オブジェクト );
             function ボタンがクリックされた() {
@@ -67,14 +68,21 @@
     
     //ここから
     if (回転中) {
-        オブジェクト.rotation.x += 0.55
-        オブジェクト.rotation.y += 0.55;
+        オブジェクト.rotation.x += 0.5
+        オブジェクト.rotation.y += 0.5;
     }
     if (投げ上げ中) {
+<<<<<<< HEAD
     オブジェクト.position.y += 速度;0
     速度 -=1
     if (速度 <= -35) {
     投げ上げ中 = false
+=======
+    オブジェクト.position.y += 速度;
+    速度 -=0.5
+    if (速度 <= -20) {
+        投げ上げ中 = false
+>>>>>>> a7e9f11321903a1a176f61d7c8f464972326cae4
     }
 }
     //ここまで
@@ -85,7 +93,12 @@
             update();
             //ここまで
         </script>
+<<<<<<< HEAD
         <p>ザ・ウルティメイトハイパーデラックススーパーローリングダイスΩ</p>
         <p1>なぜ？！？！太陽は熱いのか？！その謎を解くために我々は恒星の奥地へと向かった</p1>
+=======
+>>>>>>> a7e9f11321903a1a176f61d7c8f464972326cae4
     </body>
 </html>
+<link rel="Stylesheet"href="style.css">
+<h1>ザ・ウルティメイトハイパーデラックススーパーローリングダイスΩ</h1>
